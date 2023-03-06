@@ -1,33 +1,122 @@
-import React from 'react'
-import Link from 'next/link'
+import * as React from 'react';
+import PropTypes from 'prop-types';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import CssBaseline from '@mui/material/CssBaseline';
+import Divider from '@mui/material/Divider';
+import Drawer from '@mui/material/Drawer';
+import IconButton from '@mui/material/IconButton';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
+import MenuIcon from '@mui/icons-material/Menu';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import Link from 'next/link';
 
-const Navbar = () => {
+
+
+const drawerWidth = 240;
+const navItems = [
+  { name: 'Proyectos', path: '/proyectos' },
+  { name: 'Servicios', path: '/servicios' },
+  { name: 'Clientes', path: '/clientes' },
+  { name: 'Contacto', path: '/contacto' }
+];
+
+function DrawerAppBar(props) {
+  const { window } = props;
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen((prevState) => !prevState);
+  };
+
+  const drawer = (
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+      <Typography variant="h6" sx={{ my: 2 }}>
+        <Link href="/" passHref legacyBehavior>
+          <a style={{ textDecoration: 'none', color: 'inherit' }}>PérezDiseño</a>
+        </Link>
+      </Typography>
+      <Divider />
+      <List>
+        {navItems.map((item) => (
+          <ListItem key={item.name} disablePadding>
+            <Link style={{ textDecoration: 'none' }} href={item.path} passHref>
+              <ListItemButton sx={{ textAlign: 'center', color: '#111'}}>
+                <ListItemText primary={item.name} />
+              </ListItemButton>
+            </Link>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+  );
+
+  const container = window !== undefined ? () => window().document.body : undefined;
+
   return (
-    <nav>
-      <ul>
-        <li>
-          <Link legacyBehavior href="/">
-            <a>Inicio</a>
-          </Link>
-        </li>
-        <li>
-          <Link legacyBehavior href="/proyectos">
-            <a>Proyectos</a>
-          </Link>
-        </li>
-        <li>
-          <Link legacyBehavior href="/servicios">
-            <a>Servicios</a>
-          </Link>
-        </li>
-        <li>
-          <Link legacyBehavior href="/contacto">
-            <a>Contacto</a>
-          </Link>
-        </li>
-      </ul>
-    </nav>
-  )
+    <Box sx={{ display: 'flex' }}>
+      <CssBaseline />
+      <AppBar component="nav" sx={{ backgroundColor: '#000'}}>
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{ mr: 2, display: { sm: 'none' } }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+          >
+            <Link href="/" passHref legacyBehavior>
+              <a style={{ textDecoration: 'none', color: 'inherit' }}>PérezDiseño</a>
+            </Link>
+          </Typography>
+          <Box sx={{ display: { xs: 'none', sm: 'block'} }}>
+            {navItems.map((item) => (
+              <Link style={{ textDecoration: 'none' }} href={item.path} passHref key={item.name}>
+                <Button sx={{color: '#fff', textTransform: 'capitalize' }}>{item.name}</Button>
+              </Link>
+            ))}
+          </Box>
+        </Toolbar>
+      </AppBar>
+      <Box component="nav">
+        <Drawer
+          container={container}
+          variant="temporary"
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          ModalProps={{
+            keepMounted: true, // Better open performance on mobile.
+          }}
+          sx={{
+            display: { xs: 'block', sm: 'none' },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+          }}
+        >
+          {drawer}
+        </Drawer>
+      </Box>
+    </Box>
+  );
 }
 
-export default Navbar
+DrawerAppBar.propTypes = {
+  /**
+   * Injected by the documentation to work in an iframe.
+   * You won't need it on your project.
+   */
+  window: PropTypes.func,
+};
+
+export default DrawerAppBar;

@@ -1,17 +1,20 @@
-import { Paper, Button } from '@mui/material'
+import { Box, Paper } from '@mui/material'
+import Image from "next/image"
 
 
 function Item({item})
 {
     return (
-        <Paper>
-            <img src={item.image} alt={item.title}/>
+        <Box>
+            <Paper elevation={0}>
+                <Image 
+                    src={item.image} 
+                    alt={item.alt} 
+                    width={500}
+                    height={300}/>
+            </Paper>
             <h2>{item.title}</h2>
-
-            <Button className="CheckButton">
-                Check it out!
-            </Button>
-        </Paper>
+        </Box>
     )
 }
 

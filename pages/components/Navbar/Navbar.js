@@ -35,10 +35,12 @@ function DrawerAppBar(props) {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }} >
       <Typography variant="h6" sx={{ my: 2 }}>
         <Link href="/" passHref legacyBehavior>
-          <a style={{ textDecoration: 'none', color: 'inherit' }}>PérezDiseño</a>
+          <IconButton edge="start" color="inherit" aria-label="menu">
+              <img src="/static/logoblack.svg" alt="logo" style={{height: '24px'}} />
+            </IconButton>
         </Link>
       </Typography>
       <Divider />
@@ -78,7 +80,9 @@ function DrawerAppBar(props) {
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
             <Link href="/" passHref legacyBehavior>
-              <a style={{ textDecoration: 'none', color: 'inherit' }}>PérezDiseño</a>
+              <IconButton edge="start" color="inherit" aria-label="menu">
+                <img src="/static/logo.svg" alt="logo" style={{height: '24px'}} />
+              </IconButton>
             </Link>
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block'} }}>

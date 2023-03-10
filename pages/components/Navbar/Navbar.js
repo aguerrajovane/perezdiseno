@@ -15,6 +15,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Link from 'next/link';
+import { Container } from '@mui/system';
 
 
 
@@ -65,33 +66,45 @@ function DrawerAppBar(props) {
       <CssBaseline />
       <AppBar component="nav" sx={{ backgroundColor: '#000'}}>
         <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-          >
-            <Link href="/" passHref legacyBehavior>
-              <IconButton edge="start" color="inherit" aria-label="menu">
-                <img src="/static/logo.svg" alt="logo" style={{height: '24px'}} />
-              </IconButton>
-            </Link>
-          </Typography>
-          <Box sx={{ display: { xs: 'none', sm: 'block'} }}>
-            {navItems.map((item) => (
-              <Link style={{ textDecoration: 'none' }} href={item.path} passHref key={item.name}>
-                <Button sx={{color: '#fff', textTransform: 'capitalize' }}>{item.name}</Button>
+          <Box sx= {{  display: { sm: 'none'} }}>
+            <Container sx={{ display: 'flex', justifyContent: 'space-between' }}>
+              <Link href="/" passHref legacyBehavior>
+                <IconButton edge="start" color="inherit" aria-label="menu">
+                  <img src="/static/logo.svg" alt="logo" style={{height: '24px'}} />
+                </IconButton>
               </Link>
-            ))}
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="start"
+                onClick={handleDrawerToggle}
+                sx={{ ml: 2, display: { sm: 'none' } }}
+              >
+                <MenuIcon />
+              </IconButton>
+            </Container>
           </Box>
+  
+          <Container sx={{ display: 'flex'}}>
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+            >
+              <Link href="/" passHref legacyBehavior>
+                <IconButton edge="start" color="inherit" aria-label="menu">
+                  <img src="/static/logo.svg" alt="logo" style={{height: '24px'}} />
+                </IconButton>
+              </Link>
+            </Typography>
+            <Box sx={{ display: { xs: 'none', sm: 'block'} }}>
+              {navItems.map((item) => (
+                <Link style={{ textDecoration: 'none' }} href={item.path} passHref key={item.name}>
+                  <Button sx={{color: '#fff', textTransform: 'capitalize' }}>{item.name}</Button>
+                </Link>
+              ))}
+            </Box>
+          </Container>
         </Toolbar>
       </AppBar>
       <Box component="nav">

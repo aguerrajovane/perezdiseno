@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 const Footer = () => {
   return (
-    <div style={{ position:'fixed', bottom: '0', width: '100%', textAlign: 'center', paddingTop: '20px', paddingBottom: '10px' }}>
+    <div style={{width: '100%', textAlign: 'center', paddingTop: '20px', paddingBottom: '10px', backgroundColor: '#fff' }}>
       <hr style={{borderWidth: '2px', borderColor: '#000'}}/>
       <div style={{ display: 'flex', justifyContent:'center', alignItems: 'center', marginBottom: '0px' }}>
         <Image 

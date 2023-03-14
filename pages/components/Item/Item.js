@@ -1,19 +1,23 @@
 import { Box, Paper } from '@mui/material'
 import Image from "next/image"
-
+import styles from './item.module.css'
 
 function Item({item})
 {
     return (
         <Box>
             <Paper elevation={0}>
-                <Image 
-                    src={item.image} 
-                    alt={item.alt} 
-                    width={500}
-                    height={300}/>
+                <div className={styles.container}>
+                    <Image
+                        className={styles.image}
+                        src={item.image} 
+                        alt={item.alt} 
+                        width={1200}
+                        height={700}
+                        style={{objectFit: 'cover'}}
+                        />
+                </div>
             </Paper>
-            <h2>{item.title}</h2>
         </Box>
     )
 }

@@ -66,25 +66,15 @@ function DrawerAppBar(props) {
       <CssBaseline />
       <AppBar component="nav" sx={{ backgroundColor: '#000'}}>
         <Toolbar>
-          <Box sx= {{  display: { sm: 'none'} }}>
-            <Container sx={{ display: 'flex', justifyContent: 'space-between' }}>
-              <Link href="/" passHref legacyBehavior>
-                <IconButton edge="start" color="inherit" aria-label="menu">
-                  <img src="/static/logo.svg" alt="logo" style={{height: '24px'}} />
-                </IconButton>
-              </Link>
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                edge="start"
-                onClick={handleDrawerToggle}
-                sx={{ ml: 2, display: { sm: 'none' } }}
-              >
-                <MenuIcon />
-              </IconButton>
-            </Container>
-          </Box>
-  
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{ ml: 2, display: { sm: 'none'} }}
+          >
+            <MenuIcon />
+          </IconButton>
           <Container sx={{ display: 'flex'}}>
             <Typography
               variant="h6"

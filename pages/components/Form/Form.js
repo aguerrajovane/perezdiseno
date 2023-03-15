@@ -64,7 +64,7 @@ export default function ContactForm() {
             required
             style={{ marginBottom: 14 }}
             />
-        <Button variant="contained" color="primary" type="submit">
+        <Button style={{ backgroundColor: "#000" }} variant="contained" type="submit">
             Enviar
         </Button>
     </form>

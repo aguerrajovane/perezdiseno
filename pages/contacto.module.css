@@ -1,0 +1,27 @@
+ 
+.image {
+    max-width: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: 960px) {
+    .container{
+        flex-direction: column;
+    }
+    .image {
+        max-height: 300px;
+        margin-bottom: 15px;
+        margin-right: 0px;
+    }
+    .form {
+        margin-left: 0px;
+    }
+  }
+  @media (min-width: 960px) {
+    .image {
+        margin-right: 10px;
+    }
+    .form {
+        margin-left: 10px;
+    }
+  }

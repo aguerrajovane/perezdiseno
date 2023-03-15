@@ -10,11 +10,11 @@ function Item({item})
                 <div className={styles.container}>
                     <Image
                         className={styles.image}
-                        src={item.image} 
+                        src={item.url} 
                         alt={item.alt} 
                         width={1200}
                         height={700}
-                        style={{objectFit: 'cover'}}
+                        
                         />
                 </div>
             </Paper>

@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from "./components/Card/Card.js";
+import Card from "../components/Card/Card.js";
 
 const proyectos = () => {
   return (

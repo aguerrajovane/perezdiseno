@@ -1,5 +1,5 @@
 import React from 'react'
-import Form from "./components/Form/Form.js";
+import Form from "../components/Form/Form.js";
 import Image from "next/image"
 
 import styles from './contacto.module.css'
@@ -15,6 +15,7 @@ const contacto = () => {
           width={500}
           height={700}
           className={styles.image}
+          
           />
         <Form className={styles.form} />
       </div>
